@@ -102,7 +102,63 @@ Number of inversions: 8
 | Brute Force  | \( O(n^2) \) |
 | Merge Sort Approach | \( O(n \log n) \) |
 
+# Closest Pair of Points (Divide and Conquer)
 
+## Problem Statement  
+Given `n` points on a 2D plane, find the smallest Euclidean distance between any two points.  
+
+### Example  
+**Input:**  
+```plaintext
+5  
+2 3  
+12 30  
+40 50  
+5 1  
+12 10  
+```
+**Output:**  
+```plaintext
+Smallest distance is 1.41421
+```
+This means the closest two points are at a distance of **1.41421** (sqrt(2)).
+
+## Approach  
+
+### Brute Force Method (O(n²))  
+- When `n` is small (≤5), we calculate distances for all pairs using a nested loop.  
+
+### Divide and Conquer Method (O(n log n))  
+- The set of points is sorted by x-coordinates.
+- The midpoint is chosen, and we recursively find the smallest distance in the left and right halves.
+- A strip region is considered to check for closer pairs across the dividing line.
+- The final answer is the minimum of:
+  1. The closest pair in the left half.
+  2. The closest pair in the right half.
+  3. The closest pair in the strip.
+
+## Complexity Analysis  
+- **Sorting** takes `O(n log n)`.
+- **Divide and conquer recursion** works in `T(n) = 2T(n/2) + O(n)`, which solves to **O(n log n)**.
+- The strip checking step runs in **O(n)**.
+
+Overall, the time complexity is **O(n log n)**, which is much faster than brute force (`O(n²)`) for large `n`.
+
+## Example  
+### Input  
+```plaintext
+6  
+2 3  
+12 30  
+40 50  
+5 1  
+12 10  
+3 4  
+```
+### Output  
+```plaintext
+Smallest distance is 1.00000
+```
  
 # Tower of Hanoi (Divide and Conquer Approach)
 ## Problem Statement
